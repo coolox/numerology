@@ -1,62 +1,48 @@
 import React from 'react'
 import { useState } from 'react'
 import Calculatematrix from '../components/Calculatematrix'
-import Table from '../components/Table'
 import './Homepage.css'
+import InputDate from '../components/UI/Input/InputDate'
 
 function Homepage() {
   const [day, setDay] = useState([])
   const [month, setMonth] = useState([])
   const [year, setYear] = useState([])
   const [loading, setLoading] = useState('false')
+  const [date, setDate] = useState('')
+  
   
   const handleSubmit = (event)=>{
     event.preventDefault()
+    
+    setDay(date.split('.')[0].replace(/^0+/, '').split('').map((digit) => parseInt(digit)))
+    setMonth(date.split('.')[1].replace(/^0+/, '').split('').map((digit) => parseInt(digit)))
+    setYear(date.split('.')[2].split('').map((digit) => parseInt(digit)))
     setLoading('true')
   }
 
-  function handleKeyPress(event) {
-    if (event.key === '.' || event.key === '-' ) {
-      event.preventDefault();
-    }
+  const handleDateChange = (value)=>{
+    setDate(value)
   }
   
-  
-  
-  const handleDayChange = (event) => {
-    setDay(((event.target.value).replace(/^0+/, '')).split('').map((digit) => parseInt(digit)))
-  }
-  
-  const handleMonthChange = (event) => {
-   setMonth(((event.target.value).replace(/^0+/, '')).split('').map((digit) => parseInt(digit)))
-  }
-  
-  const handleYearChange = (event) => {
-   setYear((event.target.value).split('').map((digit) => parseInt(digit)))
-  }
- 
   return (
     <div className='container'>
       <h1>Матрица</h1>
       <form >
         <label>
-          Дата рождения
+          <h3>
+            Дата рождения
+          </h3>
           <hr/>
-          <input type="number" name="day" min='1' max='31' maxLength="2" step="1" placeholder='число' onKeyDown={handleKeyPress} onChange={handleDayChange} />
-          <span>/</span>
-          <input type="number" name="month" min="1" max="12" maxLength="2" step="1" onKeyDown={handleKeyPress} placeholder='месяц' onChange={handleMonthChange} />
-          <span>/</span>
-          <input type="number" name="year" placeholder='год' min="1800" max="2023" step="1" onKeyDown={handleKeyPress} onChange={handleYearChange} />
+          <InputDate onChange={handleDateChange} />
         </label>
-        <button type="submit" value="Submit" onClick={handleSubmit}>Подсчитать</button>
+        <button  type="submit" onClick={handleSubmit}>Подсчитать</button>
+        
       </form>
       {loading === 'false'
-        ? "Введите дату рождения"
+        ? <p className='clue'>"Введите дату рождения"</p>
         : <Calculatematrix day={day} month={month} year={year} /> 
       }
-      
-      
-  
     </div>
     
   );

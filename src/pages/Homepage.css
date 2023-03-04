@@ -4,11 +4,49 @@
   font-family: 'Roboto', sans-serif;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
-  width: 800px;
+  /* width: 800px; */
+  /* margin: auto; */
+  padding: 0;
+
+  align-self: center; 
+  background: rgb(133,96,238);
+  background: -moz-linear-gradient(139deg, rgba(133,96,238,1) 16%, rgba(221,162,227,1) 100%);
+  background: -webkit-linear-gradient(139deg, rgba(133,96,238,1) 16%, rgba(221,162,227,1) 100%);
+  background: linear-gradient(139deg, rgba(133,96,238,1) 16%, rgba(221,162,227,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#8560ee",endColorstr="#dda2e3",GradientType=1);
+}
+
+label{
   margin: auto;
   padding: 0;
-  align-self: center;
+  font-size: 15px;
+  text-align: center;
+}
+
+button {
+  /* font-family: sans-serif; */
+  margin: 5px;
+  padding: 13px;
+  border: 0;
+  border-radius: 10px;
+  font-size: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  background-color: white;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  background-color: rgb(133,96,238);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
 }
 
 h1 {
@@ -17,22 +55,73 @@ h1 {
   text-align: center;
 }
 
+
+#clue{
+  margin: 0;
+  padding: 0;
+  color: gray;
+}
+
 .container {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* .container-table{
+  margin: auto;
+  padding: 10px;
+  background: rgba(rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), 0.8)
+} */
+
+table {
+  border-collapse: collapse;
+  background: white;
+  margin: 25px;
+  font-size: 0.9em;
+  min-width: 600px;
+  border: 1px solid rgba(0, 0, 0, 0.527);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  border-radius: 20px 20px;
+  overflow: hidden;
+}
+
+
+
+/* thead{
+  border-radius: 20px;
+  background: red;
+} */
+
+td {
+  border: 1px solid rgba(0, 0, 0, 0.527);
+  padding: 10px;
+  text-align: center;
+}
+
+.cell-important {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.info {
+  text-align: left;
+}
+/* .container {
   margin: auto;
   align-content: center;
   text-align: center;
-  padding: 10px;
+  padding: 40px;
   color: black;
-  background-color: #a4afeb;
-}
-
+  background-color: rgba(teal, teal, blue, 0.5);
+} */
+/* 
 input {
   margin: auto;
   border: none;
   text-align: center;
-}
+} */
 
-input:invalid {
+/* input:invalid {
   border-bottom: 2px solid red;
   color: red;
 }
@@ -46,4 +135,4 @@ input[type='number']::-webkit-outer-spin-button,
 input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
+} */
